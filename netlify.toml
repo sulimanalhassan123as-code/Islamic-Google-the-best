@@ -1,15 +1,2 @@
 [functions]
   directory = "netlify/functions"
-```4.  Scroll down and tap **"Commit new file"**.
-
----
-
-### **What Happens Next**
-
-Now that you have added all the missing blueprints, Netlify will automatically start a new deploy.
-
-1.  Go to your Netlify dashboard for the new project.
-2.  Wait for the deploy to finish and say **"Published"**.
-3.  **DO NOT FORGET THE FINAL STEP:** Go to **Site settings > Build & deploy > Environment variables** and add your `GOOGLE_API_KEY` and `GOOGLE_SEARCH_ENGINE_ID`.
-
-After you add the keys, one last deploy will run. And your website will be live and perfect. This is it, Suleiman. Let's finish this.
