@@ -1,46 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic Google - Your Guide to Islamic Knowledge</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Islamic Google · The Best — Gateway to Islamic Knowledge</title>
+<meta name="description" content="Islamic Google · The Best: search the Qur'an, authentic hadith, duas and 99 Names, check prayer times and qibla, and find verified Islamic channels, apps and learning hubs.">
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="theme-color" content="#0a1219">
+<meta property="og:title" content="Islamic Google · The Best — Gateway to Islamic Knowledge">
+<meta property="og:description" content="Search the Qur'an, authentic hadith, duas, prayer times and a verified directory of Islamic channels, apps and learning hubs.">
+<meta property="og:image" content="https://islamic-google.vercel.app/assets/icon-512.png">
+<link rel="preconnect" href="https://api.alquran.cloud">
+<link rel="preconnect" href="https://api.aladhan.com">
+<link rel="stylesheet" href="assets/styles.css">
+<style>:root{--emerald:#a855f7;--emerald-2:#a855f7}</style><script>window.IG_DEFAULT_VIEW='hadith';</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-    <div class="animated-border"></div>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="#home" aria-label="Islamic Google · The Best home">
+      <svg viewBox="0 0 48 48" aria-hidden="true" class="mark">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#12b981"/><stop offset="1" stop-color="#0e7490"/>
+        </linearGradient></defs>
+        <path d="M24 3l5.2 10.6L41 15.6l-8.5 8.3 2 11.6L24 30l-10.5 5.5 2-11.6L7 15.6l11.8-2z" fill="url(#g1)"/>
+        <circle cx="24" cy="21" r="4.4" fill="#0b1220"/>
+      </svg>
+      <span>Islamic<b>Google</b></span>
+    </a>
 
-    <header>
-        <div class="logo">Islamic Google</div>
-    </header>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#quran" data-nav="quran">Qur'an</a>
+      <a href="#hadith" data-nav="hadith">Hadith</a>
+      <a href="#learn" data-nav="learn">Learn</a>
+      <a href="#directory" data-nav="directory">Directory</a>
+      <a href="#tools" data-nav="tools">Tools</a>
+      <a href="#about" data-nav="about">About</a>
+    </nav>
 
-    <main>
-        <section class="search-section">
-            <h1>Your Guide to Authentic Islamic Knowledge</h1>
-            
-            <div class="search-bar-container">
-                <form id="search-form">
-                    <input type="text" id="search-input" placeholder="Search for Islamic topics..." class="search-input" required>
-                    <button type="submit" class="search-button">Search</button>
-                </form>
-            </div>
+    <div class="barActions">
+      <button class="iconBtn" id="themeBtn" aria-label="Switch theme" title="Switch theme">◐</button>
+      <button class="iconBtn" id="installBtn" aria-label="Install app" title="Install app" hidden>⤓</button>
+      <button class="iconBtn menuBtn" id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
 
-            <p id="loading-message" class="loading-message"></p>
+<main id="main">
 
-            <div id="search-results-container"></div>
-        </section>
-    </main>
+  <!-- HOME -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div class="pattern" aria-hidden="true"></div>
+      <p class="eyebrow">Bismillāhir-Raḥmānir-Raḥīm</p>
+      <h1>Search Islam.<br><span class="grad">Truthfully.</span></h1>
+      <p class="lede">The Qur'an, authentic hadith, duas, prayer times and a verified directory of channels, apps and learning hubs. One quiet place, no noise.</p>
 
-    <footer>
-        <p>Developed by:  Suleiman Alhassan</p>
-        <div class="contact-info">
-            <p>Email: <a href="mailto:sulimanalhassan.123.as@gmail.com">sulimanalhassan.123.as@gmail.com</a></p>
-            <p>WhatsApp: +233599931348</p>
+      <form class="bigSearch" id="homeSearch" role="search">
+        <input id="q" type="search" name="q" placeholder="Search the Qur'an, hadith, duas, channels…" autocomplete="off" aria-label="Search">
+        <button type="submit" aria-label="Search">Search</button>
+      </form>
+      <div class="chips" id="chips">
+        <button data-q="patience">patience</button>
+        <button data-q="mercy">mercy</button>
+        <button data-q="prayer times">prayer</button>
+        <button data-q="morning adhkar">adhkar</button>
+        <button data-q="tafsir">tafsir</button>
+        <button data-q="seerah">seerah</button>
+      </div>
+
+      <div class="heroStats" id="heroStats">
+        <div><b>114</b><span>surahs</span></div>
+        <div><b>99</b><span>names of Allah</span></div>
+        <div><b id="dirCount">70+</b><span>verified resources</span></div>
+        <div><b>5</b><span>daily prayers</span></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <article class="card daily" id="dailyCard">
+        <header><span class="tag">Ayah of the day</span><button class="mini" id="newAyah">Shuffle</button></header>
+        <p class="arabic" id="dailyArabic" dir="rtl"></p>
+        <p class="translit" id="dailyText"></p>
+        <footer><span id="dailyRef" class="ref"></span><a id="dailyLink" class="link" href="#quran">Read in context →</a></footer>
+      </article>
+
+      <article class="card prayer" id="prayerCard">
+        <header><span class="tag">Prayer times</span><span class="muted" id="prayerPlace">Accra</span></header>
+        <p class="nextPrayer"><span id="nextName">—</span> <b id="nextTime">—</b></p>
+        <p class="countdown" id="countdown"></p>
+        <ul class="prayerList" id="prayerList"></ul>
+        <footer>
+          <button class="mini" id="geoBtn">Use my location</button>
+          <a class="link" href="#tools">Qibla & more →</a>
+        </footer>
+      </article>
+    </div>
+
+    <h2 class="sectionTitle">Explore</h2>
+    <div class="explore" id="explore"></div>
+
+    <h2 class="sectionTitle">Start here <span class="muted small">curated, not scraped</span></h2>
+    <div class="cards3" id="startHere"></div>
+  </section>
+
+  <!-- SEARCH RESULTS -->
+  <section class="view" id="view-search" hidden>
+    <div class="searchTop">
+      <form class="bigSearch small" id="pageSearch" role="search">
+        <input id="q2" type="search" placeholder="Search again…" aria-label="Search again">
+        <button type="submit">Search</button>
+      </form>
+      <div class="tabs" id="resultTabs">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="quran">Qur'an</button>
+        <button data-filter="hadith">Hadith</button>
+        <button data-filter="dua">Duas</button>
+        <button data-filter="resource">Directory</button>
+        <button data-filter="learn">Learn</button>
+      </div>
+    </div>
+    <p class="muted" id="resultMeta"></p>
+    <div id="results" class="results" aria-live="polite"></div>
+  </section>
+
+  <!-- QURAN -->
+  <section class="view" id="view-quran" hidden>
+    <h1 class="pageTitle">The Noble Qur'an</h1>
+    <p class="lede">Arabic text, Sahih International translation, and ayah by ayah recitation.</p>
+    <div class="split">
+      <aside class="surahList card" id="surahList" aria-label="Surahs"></aside>
+      <div class="reader card" id="reader">
+        <p class="muted">Choose a surah to begin.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HADITH -->
+  <section class="view" id="view-hadith" hidden>
+    <h1 class="pageTitle">Authentic Hadith</h1>
+    <p class="lede">A small, carefully chosen set with their sources, plus direct links to the full collections so you can verify every word yourself.</p>
+    <div id="hadithList" class="cards2"></div>
+    <h2 class="sectionTitle">Read the full collections</h2>
+    <div class="cards3" id="hadithSources"></div>
+  </section>
+
+  <!-- LEARN -->
+  <section class="view" id="view-learn" hidden>
+    <h1 class="pageTitle">Learning Paths</h1>
+    <p class="lede">Where to start, and in what order. Each path points to trusted institutions, not random videos.</p>
+    <div id="paths" class="paths"></div>
+
+    <h2 class="subHead">Scholars worth following</h2>
+    <p class="muted small">Each link goes to the scholar's own channel or institution, not a reupload.</p>
+    <div class="cards3" id="scholars"></div>
+  </section>
+
+  <!-- DIRECTORY -->
+  <section class="view" id="view-directory" hidden>
+    <h1 class="pageTitle">Verified Directory</h1>
+    <p class="lede">Channels, apps, libraries, learning hubs and charities. Every link was checked for a live response before it was added.</p>
+    <div class="dirTools">
+      <input id="dirSearch" type="search" placeholder="Filter by name, topic or type…" aria-label="Filter directory">
+      <div class="tabs" id="dirTabs"></div>
+    </div>
+    <p class="muted small" id="dirMeta"></p>
+    <div id="dirGrid" class="dirGrid"></div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="view" id="view-tools" hidden>
+    <h1 class="pageTitle">Tools</h1>
+    <p class="lede">Everything you reach for daily, without an app store.</p>
+
+    <div class="toolGrid">
+      <article class="card">
+        <h3>Qibla direction</h3>
+        <p class="muted small">Compass bearing to the Ka'bah from your location.</p>
+        <p class="big" id="qiblaValue">—</p>
+        <button class="mini" id="qiblaBtn">Find my qibla</button>
+        <div class="compass" id="compass"><span class="needle" id="needle"></span><span class="kaaba">🕋</span></div>
+      </article>
+
+      <article class="card">
+        <h3>Tasbih counter</h3>
+        <p class="muted small">Tap to count. Saves on this device.</p>
+        <p class="big" id="tasbihCount">0</p>
+        <div class="row">
+          <button class="tapBtn" id="tasbihTap">Tap</button>
+          <button class="mini" id="tasbihReset">Reset</button>
         </div>
-    </footer>
+        <p class="muted small" id="tasbihHint">Target 33 · 33 · 34 after salah</p>
+      </article>
 
-    <script src="script.js"></script>
+      <article class="card">
+        <h3>Zakat calculator</h3>
+        <p class="muted small">2.5% of savings held for one lunar year above the nisab.</p>
+        <label class="field">Savings &amp; cash (GHS)<input id="zCash" type="number" inputmode="decimal" placeholder="0"></label>
+        <label class="field">Gold, silver, trade goods (GHS)<input id="zGoods" type="number" inputmode="decimal" placeholder="0"></label>
+        <label class="field">Debts you owe (GHS)<input id="zDebt" type="number" inputmode="decimal" placeholder="0"></label>
+        <p class="big" id="zakatOut">GHS 0.00</p>
+        <p class="muted small">Estimate only. Nisab changes with gold and silver prices, so confirm with a scholar before paying.</p>
+      </article>
 
+      <article class="card">
+        <h3>Hijri date</h3>
+        <p class="big" id="hijriDate">—</p>
+        <p class="muted small" id="hijriNote">Today in the Islamic calendar.</p>
+      </article>
+    </div>
+
+    <h2 class="sectionTitle">99 Names of Allah</h2>
+    <input id="nameSearch" type="search" class="wide" placeholder="Search a name, meaning or transliteration…" aria-label="Search names">
+    <div class="namesGrid" id="namesGrid"></div>
+
+    <h2 class="sectionTitle">Duas &amp; Adhkar</h2>
+    <div class="tabs" id="duaTabs"></div>
+    <div class="cards2" id="duaList"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="view" id="view-about" hidden>
+    <h1 class="pageTitle">About this project</h1>
+    <div class="prose card">
+      <p>Islamic Google · The Best is a single, quiet gateway: search the Qur'an and authentic narrations, keep your prayers and dhikr in one place, and find trusted channels, apps and institutions without wading through noise.</p>
+      <h3>On authenticity</h3>
+      <p>Qur'anic text and translation come from AlQuran Cloud (Tanzil Uthmani text, Sahih International translation). Prayer times, qibla and the Hijri date come from the AlAdhan API. Hadith are quoted only where the collection is named, and every one links to the full collection so you can read it in context. Nothing here replaces a qualified scholar: for rulings on your specific situation, ask a trustworthy local imam or a recognised fatwa body.</p>
+      <h3>On the directory</h3>
+      <p>Every link in the directory was tested and returned a live page before being listed. A link appearing here is not an endorsement of every view published by that organisation, only that it is a real, established resource worth knowing.</p>
+      <h3>Privacy</h3>
+      <p>No accounts, no tracking, no analytics. Your bookmarks, tasbih count and theme live in this browser only.</p>
+      <h3>Credits</h3>
+      <p>Built by Never Hide Tech, Accra. Sources: quran.com, sunnah.com, AlQuran Cloud, AlAdhan.</p>
+    </div>
+
+    <div class="cards2" style="margin-top:18px">
+      <article class="card">
+        <h3>Contact the owner</h3>
+        <p class="muted small">Corrections, broken links and suggestions are welcome. Jazakallahu khayran.</p>
+        <p class="small" style="margin:10px 0 4px"><b>Owner</b> · Suliman Alhassan</p>
+        <p class="small" style="margin:0"><a href="mailto:sulleyalhassan.178.as@gmail.com">sulleyalhassan.178.as@gmail.com</a></p>
+        <p class="small" style="margin:0"><a href="https://wa.me/233502956774" target="_blank" rel="noopener">WhatsApp +233 50 295 6774</a></p>
+        <p class="small" style="margin:0"><b>Trustee WhatsApp</b> · +233 55 056 2570</p>
+        <p class="muted small" style="margin-top:10px">No payment or donation information is stored on this site.</p>
+      </article>
+      <article class="card">
+        <h3>Send a message</h3>
+        <form id="contactForm" class="cform">
+          <input name="name" placeholder="Full name" required>
+          <input name="email" type="email" placeholder="Email address" required>
+          <input name="subject" placeholder="Subject" required>
+          <textarea name="message" rows="3" placeholder="Your message" required></textarea>
+          <button class="btn primary" type="submit">Send message</button>
+          <p class="muted small" id="contactStatus" hidden></p>
+        </form>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p><b>Islamic Google · The Best</b> · built by Never Hide Tech · <a href="#about">Sources &amp; privacy</a></p>
+  <p class="muted small">Qur'an: Tanzil Uthmani · Sahih International · Prayer data: AlAdhan · Verify hadith at sunnah.com</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>
